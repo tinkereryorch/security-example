@@ -10,7 +10,8 @@ const PORT = 3000;
 const app = express();
 
 app.use(helmet());
-app.use((req, res, next) => {
+
+function checkLoggedIn(req, res, next) {
     const isLoggedIn = true;
     if (!isLoggedIn) {
         res.status(401).json({
@@ -18,7 +19,9 @@ app.use((req, res, next) => {
         });
     }
     next();
-})
+}
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
