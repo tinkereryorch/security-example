@@ -25,6 +25,8 @@ app.get('/auth/google', (req, res) => {});
 
 app.get('/auth/google/callback', (req, res) => {});
 
+app.get('/auth/logout', (req, res) => {});
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
