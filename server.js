@@ -21,7 +21,7 @@ function checkLoggedIn(req, res, next) {
     next();
 }
 
-
+app.get('/auth/google', (req, res) => {});
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
