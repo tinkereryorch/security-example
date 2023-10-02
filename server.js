@@ -3,12 +3,22 @@ const https = require('https');
 const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
+const { nextTick } = require('process');
 
 const PORT = 3000;
 
 const app = express();
 
 app.use(helmet());
+app.use((req, res, next) => {
+    const isLoggedIn = true;
+    if (!isLoggedIn) {
+        res.status(401).json({
+            error: 'Unauthenticated user',
+        });
+    }
+    next();
+})
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
