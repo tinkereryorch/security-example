@@ -7,6 +7,11 @@ const { nextTick } = require('process');
 
 const PORT = 3000;
 
+const config = {
+    CLIENT_ID: 'client_id',
+    CLIENT_SECRET: 'client_secret'
+}
+
 const app = express();
 
 app.use(helmet());
