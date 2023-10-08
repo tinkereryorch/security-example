@@ -4,7 +4,7 @@ const path = require('path');
 const express = require('express');
 const helmet = require('helmet');
 const { nextTick } = require('process');
-const passport = require('passport');   
+const passport = require('passport');
 const { Strategy } = require('passport-google-oauth20');
 
 require('dotenv').config();
@@ -18,7 +18,7 @@ const config = {
 
 const AUTH_OPTIONS = {
     callbackURL: '/auth/google/callback',
-    clientId: config.CLIENT_ID, 
+    clientId: config.CLIENT_ID,
     clientSecret: config.CLIENT_SECRET
 };
 
@@ -44,14 +44,19 @@ function checkLoggedIn(req, res, next) {
     next();
 }
 
-app.get('/auth/google', (req, res) => {});
+app.get('/auth/google', (req, res) => { });
 
-app.get('/auth/google/callback', passport.authenticate('google'), {
-    failureRedirect: '/failure',    
-    successRedirect: '/',
-});
+app.get('/auth/google/callback',
+    passport.authenticate('google', {
+        failureRedirect: '/failure',
+        successRedirect: '/',
+        session: false,
+    }), (req, res) => {
+        console.log('Google called back');
+    }
+);
 
-app.get('/auth/logout', (req, res) => {});
+app.get('/auth/logout', (req, res) => { });
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
