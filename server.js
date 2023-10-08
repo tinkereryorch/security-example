@@ -47,7 +47,8 @@ function checkLoggedIn(req, res, next) {
 app.get('/auth/google', (req, res) => {});
 
 app.get('/auth/google/callback', passport.authenticate('google'), {
-    failureRedirect: '',    
+    failureRedirect: '/failure',    
+    successRedirect: '/',
 });
 
 app.get('/auth/logout', (req, res) => {});
