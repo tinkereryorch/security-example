@@ -57,6 +57,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+app.get('/failure', (req, res) => {
+    return res.send('Failed to log in');
+});
+
 app.get('/secret', checkLoggedIn, (req, res) => {
     return res.send('Your personal secret value is PARK');
 });
