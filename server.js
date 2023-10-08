@@ -22,7 +22,12 @@ const AUTH_OPTIONS = {
     clientSecret: config.CLIENT_SECRET
 };
 
-passport.use(new Strategy(AUTH_OPTIONS, ));
+function verifyCallback(accessToken, refreshToken, profile, done) {
+    console.log('Google profile', profile);
+    done(null, profile);
+}
+
+passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
 
 const app = express();
 
