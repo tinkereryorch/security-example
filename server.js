@@ -5,11 +5,12 @@ const express = require('express');
 const helmet = require('helmet');
 const { nextTick } = require('process');
 
+require('dotenv').config();
+
 const PORT = 3000;
 
 const config = {
-    CLIENT_ID: 'client_id',
-    CLIENT_SECRET: 'client_secret'
+
 }
 
 const app = express();
