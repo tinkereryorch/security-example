@@ -16,6 +16,12 @@ const config = {
     CLIENT_SECRET: process.env.CLIENT_SECRET
 }
 
+passport.use(new Strategy({
+    callbackURL: '/auth/google/callback',
+    clientId: config.CLIENT_ID, 
+    clientSecret: config.CLIENT_SECRET
+}));
+
 const app = express();
 
 app.use(helmet());
