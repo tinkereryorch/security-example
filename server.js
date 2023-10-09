@@ -32,10 +32,19 @@ function verifyCallback(accessToken, refreshToken, profile, done) {
 }
 
 passport.use(new Strategy(AUTH_OPTIONS, verifyCallback));
+passport.serializeUser((user, done) => {
+
+})
+
+passport.deserializeUser((obj, done) => {
+    done(null, obj);
+})
 
 const app = express();
 
 app.use(helmet());
+
+
 
 app.use(cookieSession({
     name: 'session',
