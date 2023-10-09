@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const { nextTick } = require('process');
 const passport = require('passport');
 const { Strategy } = require('passport-google-oauth20');
+const cookieSession = require('cookie-session');
 
 require('dotenv').config();
 
