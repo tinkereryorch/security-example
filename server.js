@@ -18,12 +18,13 @@ const config = {
 
 const AUTH_OPTIONS = {
     callbackURL: '/auth/google/callback',
-    clientId: config.CLIENT_ID,
+    clientID: config.CLIENT_ID,
     clientSecret: config.CLIENT_SECRET
 };
 
 function verifyCallback(accessToken, refreshToken, profile, done) {
     console.log('Google profile', profile);
+    console.log('Access Token', accessToken);
     done(null, profile);
 }
 
